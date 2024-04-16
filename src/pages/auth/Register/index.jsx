@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import Input from "../../../components/Input";
 import api from "../../../config/api";
+import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = () => {
   const navigate = useNavigate();
   const [form, setform] = useState({
-    nama: "",
+    name: "",
     email: "",
     phone:"",
     password: "",
@@ -14,19 +17,20 @@ const Register = () => {
 
   
   const handleRegister = ()=>{
-    api.post(`workers/register`,{
-        nama: form.nama,
+    console.log(form)
+    axios.post('https://fwm17-be-peword.vercel.app/v1/workers/register',{
+        name: form.name,
         email: form.email,
         phone: form.phone,
         password: form.password
     })
-    .then(()=>{
+    .then((res)=>{
       alert('selamat berhasil login')
       navigate('/login')
     })
-    .catch(()=>{
-      console.log(err.response);
-      alert('anda gagal register')
+    .catch((err)=>{
+      console.log(err);
+      alert(err.response.data.message)
     })
     // .then((res)=>{
     //   alert('selamat berhasil login')
@@ -78,10 +82,10 @@ const Register = () => {
         </span>
         
         <Input
-          form={form.nama}
+          form={form.name}
           label="Nama"
           type="text"
-          name="nama"
+          name="name"
           placeholder="Masukkan Nama"
           onChange={handleChange}
         />
@@ -105,7 +109,7 @@ const Register = () => {
           form={form.password}
           label="Password"
           type="password"
-          name="pass"
+          name="password"
           placeholder="Masukan kata sandi"
           onChange={handleChange}
         />

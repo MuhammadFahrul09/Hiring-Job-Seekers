@@ -11,6 +11,7 @@ export default {
     },
     backgroundImage:{
       hero : "url('/public/assets/image/bg-overlay.png')",
+      banner: "url('/assets/image/banner.png')"
     },
     screens: {
       // 'base': '375px',

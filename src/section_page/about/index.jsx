@@ -1,9 +1,97 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, HashNavigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const About = () => {
     return(
         <>
-            <section className="pt-20">
+         <section className="p-[20px] bg-[#FAFBFC] lg:p-[50px] mt-20">
+                <div
+                    className="text-[20px] lg:text-[36px] font-semibold flex justify-center m-10">
+                    Their opinion about Peworld
+                </div>
+                <div className="flex justify-center">
+                    <div className="w-full justify-items-center">
+                        <div className="justify-items-center z-[-10]">
+                            <Swiper
+                                spaceBetween={30}
+                                hashNavigation={{
+                                    watchState: true
+                                }}
+                                pagination={{
+                                    clickable: true
+                                }}
+                                navigation={true}
+                                modules={[Pagination, Navigation, HashNavigation]}
+                                className="mySwiper">
+                                <SwiperSlide data-hash="slide1">
+                                    <div className="flex justify-center">
+                                        <img
+                                            className="h-[40px] w-[40px] rounded-full border-8 border-[#FBB0175E] m-5 lg:h-[120px] lg:w-[120px]"
+                                            src="/assets/image/avatar-icon.png"
+                                            alt="logo-peworld" />
+                                    </div>
+                                    <div className="px-5">
+                                        <h5 className="text-gray-900 text-[30px] font-medium mb-2 flex justify-center">
+                                            Thomas Shelby
+                                        </h5>
+                                        <div className="flex justify-center mb-4 text-gray-700">
+                                            Web Developer
+                                        </div>
+                                        <p className="flex justify-center mb-4 text-gray-700">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui
+                                            rhoncus auctor.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide data-hash="slide2">
+                                    <div className="flex justify-center">
+                                        <img
+                                            className="h-[30px] w-[30px] rounded-full border-8 border-[#FBB0175E] m-5 lg:h-[120px] lg:w-[120px]"
+                                            src="/assets/image/christian-buehner-DItYlc26zVI-unsplash 1.png"
+                                            alt="logo-peworld" />
+                                    </div>
+                                    <div className="px-5">
+                                        <h5 className="text-gray-900 text-[30px] font-medium mb-2 flex justify-center">
+                                            Van Basten
+                                        </h5>
+                                        <div className="flex justify-center mb-4 text-gray-700">
+                                            Web Developer
+                                        </div>
+                                        <p className="flex justify-center mb-4 text-center text-gray-700">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui
+                                            rhoncus auctor.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide data-hash="slide3">
+                                    <div className="flex justify-center">
+                                        <img
+                                            className="h-[30px] w-[30px] rounded-full border-8 border-[#FBB0175E] m-5 lg:h-[120px] lg:w-[120px]"
+                                            src="/assets/image/card-profile.png"
+                                            alt="logo-peworld" />
+                                    </div>
+                                    <div className="px-5">
+                                        <h5 className="text-gray-900 text-[30px] font-medium mb-2 flex justify-center">
+                                            Muller
+                                        </h5>
+                                        <div className="flex justify-center mb-4 text-gray-700">
+                                            Web Developer
+                                        </div>
+                                        <p className="flex justify-center mb-4 text-gray-700">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui
+                                            rhoncus auctor.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* <section className="pt-20">
     <div className="container mx-auto">
       <div className="flex flex-col">
         <div className="w-full">
@@ -68,7 +156,7 @@ const About = () => {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
         </>
     )
 }

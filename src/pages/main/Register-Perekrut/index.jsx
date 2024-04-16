@@ -2,39 +2,46 @@ import React, { useState } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import Input from "../../../components/Input";
 import api from "../../../config/api";
+import axios from "axios";
 
 
-const Login = () => {
+
+const RegisterPerekrut = () => {  
   const navigate = useNavigate();
   const [form, setform] = useState({
+    name: "",
     email: "",
+    phone:"",
     password: "",
+    company:"",
+    position:""
   });
 
-  const handleLogin = (e)=>{
-    e.preventDefault()
-    api({
-      method: 'POST',
-      url: `/auth/login`,
-      data: {
+  
+  const handleRegister = ()=>{
+    api.post(`recruiters/register`,{
+        name: form.name,
         email: form.email,
-        password: form.password
-      }
+        phone: form.phone,
+        password: form.password,
+        company: form.company,
+        position: form.position
     })
-    .then((res)=>{
-      const {token, refreshToken, role} = res.data.data
-      localStorage.setItem('token', token)
-      localStorage.setItem('resfreshToken', refreshToken)
-      localStorage.setItem('role', role)
-      if(role === 'worker'){
-        navigate('/home')
-      } else {
-        navigate('/profil-company')
-      }
+    .then(()=>{
+      alert('selamat berhasil login')
+      navigate('/login')
     })
     .catch((err)=>{
       console.log(err.response);
+      alert(err.response.data.massage)
     })
+    // .then((res)=>{
+    //   alert('selamat berhasil login')
+    //   navigate('/login')
+    // })
+    // .catch((err)=>{
+    //   console.log(err.response);
+    // })
   }
   const handleChange = (e) => {
     setform({
@@ -50,7 +57,7 @@ const Login = () => {
         <img
           src="/assets/image/bg-overlay.png"
           alt=""
-          className="w-[650px] h-full hidden md:block object-cover"
+          className="w-[650px] h-[650px] hidden md:block object-cover"
         />
         <div className="absolute top-0 bottom-0 left-0 right-0 hidden p-6 md:block">
           <img
@@ -76,13 +83,45 @@ const Login = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
           ipsum et dui rhoncus auctor.
         </span>
-        <form onSubmit={handleLogin}>
+        
+        <Input
+          form={form.name}
+          label="Nama"
+          type="text"
+          name="name"
+          placeholder="Masukkan Nama"
+          onChange={handleChange}
+        />
         <Input
           form={form.email}
           label="Email"
           type="email"
           name="email"
-          placeholder="Masukan email"
+          placeholder="Masukan kata sandi"
+          onChange={handleChange}
+        />
+        <Input
+          form={form.company}
+          label="Perusahaan"
+          type="text"
+          name="company"
+          placeholder="Masukkan nama Perusahaan"
+          onChange={handleChange}
+        />
+        <Input
+          form={form.position}
+          label="Jabatan"
+          type="text"
+          name="position"
+          placeholder="Posisi di perusahaan Anda"
+          onChange={handleChange}
+        />
+        <Input
+          form={form.phone}
+          label="No Hanphone"
+          type="text"
+          name="phone"
+          placeholder="Masukkan nomor Handphone"
           onChange={handleChange}
         />
         <Input
@@ -93,12 +132,11 @@ const Login = () => {
           placeholder="Masukan kata sandi"
           onChange={handleChange}
         />
-        </form>
         <span className="text-lg font-normal text-right font-openSans text-Black">
           Lupa Kata Sandi?
         </span>
         <div className="mt-6">
-          <button onClick={handleLogin} className="w-full p-4 text-lg font-bold text-white border-none rounded-md bg-yellow font-openSans">
+          <button onClick={handleRegister} className="w-full p-4 text-lg font-bold text-white border-none rounded-md bg-yellow font-openSans">
             Masuk
           </button>
         </div>
@@ -117,4 +155,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default RegisterPerekrut

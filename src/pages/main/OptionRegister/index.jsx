@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
-const Optionlogin = () => {
+
+const OptionRegister = () =>{
     return(
-        <>
         <main className="block bg-[#F6F7F8] h-screen md:flex lg:flex">
         <section>
           <div className="block w-screen h-screen bg-cover bg-hero lg:hidden">
@@ -22,9 +22,9 @@ const Optionlogin = () => {
                 </div>
 
                 <div className="flex justify-center m-5 mt-[150px]">
-                    <Link to ="/login">
+                    <Link to="/register">
                     <button className="bg-[#FFFF] hover:bg-[#5E50A1] text-[#5E50A1] font-bold py-2 px-4  h-[50px] w-[100%] rounded">
-                    Masuk sebagai pekerja
+                    Daftar sebagai pekerja
                     </button> 
                     </Link>
                 </div>
@@ -36,11 +36,11 @@ const Optionlogin = () => {
                   </div>
                 </div>
                 <div className="flex justify-center m-5">
-                <Link to ="/login">
+                    <Link to='/register-perekrut'>
                     <button className="bg-[#FFFFF] border hover:bg-[#5E50A1] text-white font-bold py-2 px-4  h-[50px] w-[100%] rounded">
-                    Masuk sebagai perekrut
+                    Daftar sebagai perekrut
                     </button>
-                </Link>
+                    </Link>
                 </div>
 
                 <div className="flex justify-center m-7"></div>
@@ -77,15 +77,15 @@ const Optionlogin = () => {
               </div>
 
               <div className="pl-5 pt-2 text-[14px] text-[#858D96]">
-                Please choose login option below
+                Please choose Register option below
               </div>
 
               <div className="flex justify-center m-5">
-                  <Link to ="/login">
+                <Link to="/register">
                   <button className="bg-[#5E50A1] text-white font-bold py-2 px-4  h-[50px] w-[100%] rounded">
-                    Masuk Sebagai Pekerja
+                    Daftar Sebagai Pekerja
                   </button>
-                  </Link>
+                </Link>
               </div>
               <div>
                 <div className="">
@@ -95,11 +95,11 @@ const Optionlogin = () => {
                 </div>
               </div>
               <div className="flex justify-center m-5">
-              <Link to ="/login">
+                <Link to="/register-perekrut">
                   <button className="bg-[#FFFFF] text-[#5E50A1] border border-[#5E50A1] font-bold py-2 px-4 h-[50px] w-[100%] rounded">
-                    Masuk Sebagai Perekrut
-                  </button>        
-              </Link>
+                    Daftar Sebagai Perekrut
+                  </button>
+                </Link>
               </div>
 
               <div className="flex justify-center m-7"></div>
@@ -107,8 +107,7 @@ const Optionlogin = () => {
           </div>
         </section>
       </main>
-        </>
     )
 }
 
-export default Optionlogin
+export default OptionRegister
